@@ -398,8 +398,11 @@
             input.addEventListener('keypress', e => { if (e.key === 'Enter') send(); });
 
             // ⚠️ PASTE YOUR ACTUAL PUSHER KEYS HERE ⚠️
-            const pusher = new Pusher("bed6a7a1a190004afd24", { cluster: "mt1" });
-            const channel = pusher.subscribe('chat-channel');
+        const pusher = new Pusher("2211571", "e7cc593604cd1384f3d1", "07629e3f6c824855fa2e");
+pusher.setCluster("mt1");
+pusher.setEncrypted(true);
+
+pusher.trigger("my-channel", "my-event", Collections.singletonMap("message", "hello world"));
             
             channel.bind('agent-message-' + myUserId, function(data) {
                 addMsg(data.text, 'agent');
